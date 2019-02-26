@@ -9,6 +9,8 @@ import {BrowserRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
 import Login from './pages/login'
 import Admin from './pages/admin'
 
+import './assets/index.css'
+
 
 export default class App extends Component{
 
@@ -16,8 +18,9 @@ export default class App extends Component{
         return(
             <Router>
                 <Switch>
-                <Route path='/login' component={Login}/>
-                <Route path='/' component={Admin}/>
+                    <Route path='/login' component={Login}/>
+                    {/*<Route path='/' component={Admin}/>*/}
+                    <Redirect to='/login'/>
                 </Switch>
             </Router>
         )
