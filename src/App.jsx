@@ -3,21 +3,23 @@
  */
 
 import React ,{Component} from 'react';
-import {render} from 'react-dom'
-import {Button,message} from 'antd'
+// import {render} from 'react-dom'
+import {BrowserRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
+// import {Button,message} from 'antd'
 import Login from './pages/login'
 import Admin from './pages/admin'
 
 
 export default class App extends Component{
-    handleClick=()=>{
-        message.info('点击按钮',1);
-    }
+
     render(){
         return(
-            <div>
-                <Button onClick={this.handleClick} type='primary'>按钮</Button>
-            </div>
+            <Router>
+                <Switch>
+                <Route path='/login' component={Login}/>
+                <Route path='/' component={Admin}/>
+                </Switch>
+            </Router>
         )
     }
 }
