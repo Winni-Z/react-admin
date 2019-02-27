@@ -1,6 +1,6 @@
 import React, {Component}from 'react';
 import Loginform from '../../components/login-form'
-import logo from './logo.png'
+import logo from '../../assets/imgs/logo.png'
 import bg from './bg.jpg'
 import {reqLogin} from '../../api/index'
 
