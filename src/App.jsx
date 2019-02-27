@@ -19,7 +19,7 @@ export default class App extends Component{
             <Router>
                 <Switch>
                     <Route path='/login' component={Login}/>
-                    {/*<Route path='/' component={Admin}/>*/}
+                    <Route path='/' component={Admin}/>
                     <Redirect to='/login'/>
                 </Switch>
             </Router>

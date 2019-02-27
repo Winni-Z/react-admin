@@ -4,8 +4,7 @@ export default class Admin extends Component {
     render() {
         return (
             <header>
-                2222222
-
+                222222222222
             </header>
         )
     }

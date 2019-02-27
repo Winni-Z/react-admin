@@ -1,16 +1,21 @@
 import React, {Component}from 'react';
 import {Form, Icon, Input, Button,message} from 'antd';
+import PropTypes from 'prop-types';
 
-const  Item=Form.Item
+// import {reqLogin} from '../../api'
+const  Item=Form.Item;
 
  class Loginform extends Component {
+    static propTypes ={
+        login: PropTypes.func.isRequired
+    }
 
      handlePassword=(rule, value, callback)=>{
          const { getFieldValue } = this.props.form
          if(!value){
              callback('请输入密码')
-         }else if(value.length<6){
-             callback('密码长度要大于6位数')
+         }else if(value.length<5){
+             callback('密码长度要大于等于5位数')
          }else if(value.length>15){
              callback('密码长度不能大于15位数')
          }else if((!/^[a-zA-Z0-9_]+$/.test(value))){
@@ -19,16 +24,19 @@ const  Item=Form.Item
              callback()
          }
 
-     }
+     };
      handleSubmit = (e) => {
          const {validateFields,resetFields,getFieldsValue}=this.props.form;
          e.preventDefault();
-         validateFields((err, values) => {
-             if (!err) {
+         validateFields(async(error, values) => {
+             if (!error) {
                  console.log('收集的表单数据: ', values);
+                 const {username,password}=values;
+                 this.props.login(username,password)
+
              }else{
                  resetFields(['password'])
-                 const errmsg=Object.values(err).reduce((prev,current)=>prev+current.errors[0].message+'','')
+                 const errmsg=Object.values(error).reduce((prev,current)=>prev+current.errors[0].message+'','')
                  message.error(errmsg)
              }
          });
@@ -39,7 +47,7 @@ const  Item=Form.Item
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <Item>
-                    {getFieldDecorator('userName', {
+                    {getFieldDecorator('username', {
                         rules: [{ required: true, message: 'Please input your username!' },
                             {min:5,message:'用户名长度要大于5!'},
                             {max:12,message:'用户名长度不能超过12位!'},
