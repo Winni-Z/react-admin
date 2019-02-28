@@ -3,6 +3,8 @@ import Loginform from '../../components/login-form'
 import logo from '../../assets/imgs/logo.png'
 import bg from './bg.jpg'
 import {reqLogin} from '../../api/index'
+import MemoryUtils from '../../utils/memoryUtils'
+import {setUser} from '../../utils/storageUtils'
 
 import './index.less'
 
@@ -13,6 +15,10 @@ export default class Login extends Component {
         const result = await reqLogin(username,password)
         console.log(result);
         if(result.status===0){
+// 保存用户信息，保存到loacalStoryge,sesionStoryge浏览器本地存储
+            setUser(result.data)
+            MemoryUtils.user=result.data
+
             this.props.history.replace('/')
         } else {
             this.setState({

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Row, Col } from 'antd';
-import {Switch, Route} from 'react-router-dom';
-
+import {Switch, Route,Redirect} from 'react-router-dom';
+import MemoryUtils from '../../utils/memoryUtils'
 
 import LeftNav from '../../components/left-nav'
 import Header from '../../components/header'
@@ -21,6 +21,10 @@ import Pie from  '../charts/pie'
 import './index.less'
 export default class Admin extends Component {
     render() {
+        const user=MemoryUtils.user
+        if(!user||!user._id){
+           return <Redirect to='/login'/>
+        }
         return (
 
                 <Row className='admin'>
@@ -40,20 +44,19 @@ export default class Admin extends Component {
                                 <Route path='/charts/line' component={Line}/>
                                 <Route path='/charts/pie' component={Pie}/>
 
-
-
                                 {/*<Home path='/home' component={Home}>*/}
                                     {/*<Category path='/category' component={Category}/>*/}
                                     {/*<User path='/user' component={User}/>*/}
                                     {/*<Role path='/role' component={Role}/>*/}
-                                {/*<Redirect/>*/}
+                                <Redirect to='/home'/>
                             </Switch>
-
                         </div>
                         <Footer/>
                     </Col>
                 </Row>
-
         )
     }
 }
+
+
+
