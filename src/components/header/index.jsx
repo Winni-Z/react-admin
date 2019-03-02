@@ -73,7 +73,7 @@ class Header extends Component {
                 }
             } else {
                 if(item.key===pathname){
-                    console.log(item.key);
+                    // console.log(item.key);
                     return item.title
                 }
             }
@@ -84,7 +84,7 @@ class Header extends Component {
         const {sysTime,dayPictureUrl,weather}=this.state
         const {username}=MemoryUtils.user
         const title=this.getTille(menuList)
-        console.log(title);
+        // console.log(title);
         return (
             <div className="header">
                 <Row className='header-top'>

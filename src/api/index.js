@@ -28,3 +28,8 @@ export const reqWeater=(city)=>{
     })
 }
 
+export const reqCategory=(parentId)=>ajax(urldata+'/manage/category/list',{parentId},'GET')
+
+export const reqAddCategory=(parentId,categoryName)=>ajax(urldata+'/manage/category/add',{parentId,categoryName},'POST')
+
+export const reqUpdateCategoryName=(categoryId,categoryName)=>ajax(urldata+'manage/category/update',{categoryId,categoryName},'POST')
