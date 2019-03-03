@@ -32,4 +32,8 @@ export const reqCategory=(parentId)=>ajax(urldata+'/manage/category/list',{paren
 
 export const reqAddCategory=(parentId,categoryName)=>ajax(urldata+'/manage/category/add',{parentId,categoryName},'POST')
 
-export const reqUpdateCategoryName=(categoryId,categoryName)=>ajax(urldata+'manage/category/update',{categoryId,categoryName},'POST')
+export const reqUpdateCategoryName=(categoryId,categoryName)=>ajax(urldata+'/manage/category/update',{categoryId,categoryName},'POST')
+
+export const reqProductsLists=(pageNum,pageSize)=>ajax(urldata+'/manage/product/list',{pageNum,pageSize},'GET')
+
+export const reqSearchProductsLists=(pageNum,pageSize,searchType,searchName)=>ajax(urldata+'/manage/product/list',{pageNum,pageSize,[searchType]:searchName},'GET')

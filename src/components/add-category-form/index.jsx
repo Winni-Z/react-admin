@@ -7,7 +7,7 @@ const Option = Select.Option;
 
 class AddCategoryForm extends Component {
     static propTypes={
-        categaries: PropTypes.array.isRequired,
+        categories: PropTypes.array.isRequired,
 
         setForm:PropTypes.func.isRequired
     };
@@ -18,8 +18,8 @@ class AddCategoryForm extends Component {
 
     render() {
         const {getFieldDecorator}=this.props.form;
-        const {categaries}=this.props;
-        console.log(categaries);
+        const {categories}=this.props;
+        // console.log(categories);
         return (
             <Form>
                 <Item  label='所属分类'>
@@ -30,7 +30,7 @@ class AddCategoryForm extends Component {
                         <Select>
                             <Option key='0' value="0">一级分类</Option>
                             {
-                                categaries.map((item,index) => <Option key={item._id} value={item._id}>{item.name}</Option>)
+                                categories.map(item => <Option key={item._id} value={item._id}>{item.name}</Option>)
                             }
                         </Select>
                     )
